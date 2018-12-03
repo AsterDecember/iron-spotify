@@ -82,6 +82,15 @@ app.use('/', index);
 
 const authRoutes = require('./routes/auth/auth');
 app.use('/auth', authRoutes);
-      
+
+const albumsRoutes = require('./routes/spotify/albums')
+const artistRoutes = require('./routes/spotify/artists')
+const spotifyRoutes = require('./routes/spotify/spotify')
+const examplesRoutes = require('./routes/spotify/examples')
+app.use('/albums',albumsRoutes)
+app.use('/artists',artistRoutes)
+app.use('/spotify',spotifyRoutes)
+app.use('/examples',examplesRoutes)
+
 
 module.exports = app;

@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const User = require("../../models/User");
 const passport = require("passport");
-const validate = require("../../middleware/roles")
 var SpotifyWebApi = require('spotify-web-api-node');
 
 
