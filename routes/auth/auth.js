@@ -2,58 +2,47 @@ const router = require("express").Router();
 const User = require("../../models/User");
 const passport = require("passport");
 
-function checkIfIsHere(req, res, next) {
-    console.log("logeado??", req.isAuthenticated());
+function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    return res.redirect("/auth/login");
+    res.redirect('/login');
 }
 
-function checkIfIs(role) {
-    return function(req, res, next) {
-        if (req.user.role === role) return next();
-        return res.send({ message: `No eres un ${role}` });
-    };
-}
-
+//-------------------- PASSPORT SPOTIFY-------------------
+// GET /auth/spotify
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request. The first step in spotify authentication will involve redirecting
+//   the user to spotify.com. After authorization, spotify will redirect the user
+//   back to this application at /auth/spotify/callback
 router.get(
-    "/callback/facebook",
-    passport.authenticate("facebook", { failureRedirect: "/login" }),
-    (req, res) => {
-        res.json(req.user);
+    '/login',
+    passport.authenticate('spotify', {
+        scope: ['user-read-email', 'user-read-private'],
+        showDialog: true
+    }),
+    function(req, res) {
+        // The request will be redirected to spotify for authentication, so this
+        // function will not be called.
     }
 );
 
-router.post("/facebook", passport.authenticate("facebook"), (req, res) => {});
+// GET /auth/spotify/callback
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request. If authentication fails, the user will be redirected back to the
+//   login page. Otherwise, the primary route function function will be called,
+//   which, in this example, will redirect the user to the home page.
+router.get(
+    '/callback',
+    passport.authenticate('spotify', { failureRedirect: '/login' }),
+    function(req, res) {
 
-router.get("/logout", (req, res) => {
-    req.logOut();
-    res.redirect("/auth/login");
+        res.redirect('/');
+    }
+);
+
+router.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
 });
-
-
-
-router.post("/login", passport.authenticate("local"), (req, res, next) => {
-    const email = req.user.email;
-    req.app.locals.user = req.user;
-    res.send("Tu eres un usuario real con email: " + email);
-});
-
-router.get("/login", (req, res, next) => {
-    res.render("auth/login");
-});
-
-router.get("/signup", (req, res, next) => {
-    res.render("auth/signup");
-});
-
-router.post("/signup", (req, res, next) => {
-    User.register(req.body, req.body.password)
-        .then(user => {
-            res.json(user);
-        })
-        .catch(e => next(e));
-});
-
 module.exports = router;

@@ -19,36 +19,13 @@ passport.deserializeUser(function(obj, done) {
 });
 
 
-//facebook
-passport.use(
-    new FacebookStrategy(
-        {
-            clientID: process.env.FID,
-            clientSecret: process.env.FSECRET,
-            callbackURL: "http://localhost:3000/auth/callback/facebook",
-            profileFields: ["picture", "displayName", "emails"]
-        },
-        function(accessToken, refreshToken, profile, cb) {
-            User.findOne({ facebookId: profile.id }).then(user => {
-                if (user) return cb(null, user);
-                return User.create({
-                    username: profile.displayName,
-                    email: profile.emails[0].value,
-                    facebookId: profile.id
-                })
-                    .then(user => cb(null, user))
-                    .catch(err => cb(err));
-            });
-        }
-    )
-);
-
+//Spotify login
 passport.use(
     new SpotifyStrategy(
         {
             clientID: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
-            callbackURL: 'http://localhost:3000/spotify/callback'
+            callbackURL: 'http://localhost:3000/auth/callback'
         },
         function(accessToken, refreshToken, expires_in, profile, done) {
             User.findOrCreate({ spotifyId: profile.id }, function(err, user) {
