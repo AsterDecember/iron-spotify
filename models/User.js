@@ -3,8 +3,13 @@ const Schema   = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new Schema({
-  username : String,
-  email    : String,
+    displayName : String,
+    email       : String,
+    id          : String,
+    external_urls : String,
+    uri : String,
+    country : String,
+    product : String,
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -12,12 +17,19 @@ const userSchema = new Schema({
   }
 });
 
-userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
 userSchema.statics.findOrCreate = function findOrCreate(profile, cb){
     var userObj = new this();
-    this.findOne({_id : profile.id},function(err,result){
+    this.findOne({id : profile.profile.id},function(err,result){
         if(!result){
-            userObj.username = profile.displayName;
+            userObj.displayName = profile.profile.displayName;
+            userObj.email = profile.profile.email;
+            userObj.id = profile.profile.id;
+            userObj.external_urls = profile.profile.external_urls;
+            userObj.country = profile.profile.country;
+            userObj.uri = profile.profile.uri;
+            userObj.product = profile.profile.product;
+            console.log("producto",profile.profile)
+            console.log("obkj",userObj)
             //....
             userObj.save(cb);
         }else{

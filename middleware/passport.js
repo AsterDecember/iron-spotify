@@ -1,13 +1,8 @@
 const passport = require("passport");
 const User = require("../models/User");
-const FacebookStrategy = require("passport-facebook");
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
 
-//local
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 //serialize for spotify
 passport.serializeUser(function(user, done) {
@@ -28,7 +23,8 @@ passport.use(
             callbackURL: (process.env.URI || 'http://localhost:3000/auth/callback')
         },
         function(accessToken, refreshToken, expires_in, profile, done) {
-            User.findOrCreate({ spotifyId: profile.id }, function(err, user) {
+            console.log(profile)
+            User.findOrCreate({ profile }, function(err, user) {
                 return done(err, user);
             });
         }
