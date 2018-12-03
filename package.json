@@ -25,6 +25,7 @@
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
+    "passport-spotify": "^1.0.1",
     "serve-favicon": "^2.5.0",
     "spotify-web-api-node": "^4.0.0"
   },
