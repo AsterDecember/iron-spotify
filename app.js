@@ -77,8 +77,8 @@ app.use(session({
 app.use(flash());
 
 
-/*const index = require('./routes/index');
-app.use('/', index);*/
+const index = require('./routes/index');
+app.use('/', index);
 
 const authRoutes = require('./routes/auth/auth');
 app.use('/auth', authRoutes);
