@@ -5,8 +5,8 @@ var SpotifyWebApi = require('spotify-web-api-node');
 
 
 var spotifyApi = new SpotifyWebApi({
-    clientId : process.env.clientId,
-    clientSecret : process.env.clientSecret
+    clientId : process.env.CLIENT_ID,
+    clientSecret : process.env.CLIENT_SECRET
 });
 
 // Retrieve an access token.
@@ -19,7 +19,8 @@ spotifyApi.clientCredentialsGrant()
 
 
 router.get('/',(req,res)=>{
-    res.render('index');
+    console.log(spotifyApi)
+    res.render('music/spotify/index');
 })
 
 router.get('/artist',(req,res)=>{
@@ -29,7 +30,7 @@ router.get('/artist',(req,res)=>{
         .then(data => {
             console.log(data.body.artists.items[0].images[0])
             let artist = data.body.artists.items
-            res.render('search',{artist})
+            res.render('music/spotify/searchArtist',{artist})
         })
         .catch(err => console.log(err))
 
@@ -56,7 +57,7 @@ router.get('/getTracks/:id',(req,res)=>{
         .then(function(data) {
             console.log(data.body);
             let tracks = data.body.items
-            res.render('tracks',{tracks})
+            res.json({tracks})
         }, function(err) {
             console.log('Something went wrong!', err);
         });
