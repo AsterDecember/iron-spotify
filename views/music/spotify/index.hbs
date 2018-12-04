@@ -4,6 +4,7 @@
         <h1>Congrats logged id :D</h1>
         <h2>{{user.displayName}}</h2>
         <h2>{{user.accessToken}}</h2>
+        <input id="token" type="text" value="{{user.accessToken}}" style="display: none">
     </div>
     <div id="loggedin">
         <a href="/spotify/getToken"></a>
@@ -11,3 +12,9 @@
 </div>
 
 <script src="/javascripts/miguelspotify.js"></script>
+<script>
+    console.log('Ola javi')
+    var token={{user.accessToken}}
+    console.log(token)
+    //window.localStorage.setItem('my_token',{{user.accessToken}})
+</script>
