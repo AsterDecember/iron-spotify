@@ -2,7 +2,6 @@
 @import './style-example.css';
 
 body{
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -41,18 +40,24 @@ a {
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  z-index: 10;
 }
+
 .form button:hover,.form button:active,.form button:focus {
   background: #43A047;
 }
 
 *{
-  background-color: #252525;
+  background-color: rgb(25,25,25);
   color: white;
+  margin: 0;
+  padding: 0;
 }
 .form{
-  background-color: #252525;
+  background-color: rgb(25,25,25);
 }
 .login-form{
+  background-color: rgba(0,0,0,.45);
   text-align: center;
 }
+

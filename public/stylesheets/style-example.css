@@ -2,6 +2,21 @@
     position: relative;
     display: block;
 }
+.music-rgba{
+    position: relative;
+    width: 100%;
+    z-index: -3;
+}
+.black-out{
+    background-color: rgba(0,0,0,.4);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+}
+.outside{
+    z-index: 999;
+}
 .music-div {
     width: 15px;
     height: 60px;

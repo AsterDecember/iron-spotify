@@ -1,7 +1,6 @@
 @import url(./style-example.css);
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
@@ -34,19 +33,23 @@ a {
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
-  cursor: pointer; }
+  cursor: pointer;
+  z-index: 10; }
 
 .form button:hover, .form button:active, .form button:focus {
   background: #43A047; }
 
 * {
-  background-color: #252525;
-  color: white; }
+  background-color: #191919;
+  color: white;
+  margin: 0;
+  padding: 0; }
 
 .form {
-  background-color: #252525; }
+  background-color: #191919; }
 
 .login-form {
+  background-color: rgba(0, 0, 0, 0.45);
   text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
