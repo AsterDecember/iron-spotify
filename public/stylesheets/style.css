@@ -14,7 +14,6 @@ a {
 .form {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -46,10 +45,10 @@ a {
   padding: 0; }
 
 .form {
-  background-color: #191919; }
+  background-color: rgba(14, 14, 14, 0.45); }
 
 .login-form {
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(14, 14, 14, 0.45);
   text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
