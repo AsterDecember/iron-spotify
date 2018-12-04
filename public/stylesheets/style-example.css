@@ -1,0 +1,272 @@
+.music-span {
+    position: relative;
+    display: block;
+}
+.music-div {
+    width: 15px;
+    height: 60px;
+    background-color: blue;
+    border-radius: 10px;
+    top: 100px;
+    position: absolute;
+}
+.music-div:nth-child(1) {
+    animation: music 20s 0s linear infinite;
+}
+.music-div:nth-child(2) {
+    animation: music 20s -0.5s linear infinite;
+}
+.music-div:nth-child(3){
+    animation: music 20s -1s linear infinite;
+}
+.music-div:nth-child(4) {
+    animation: music 20s -2.5s linear infinite;
+}
+.music-div:nth-child(5) {
+    animation: music 20s -3s linear infinite;
+}
+.music-div:nth-child(6) {
+    animation: music 20s -3.5s linear infinite;
+}
+.music-div:nth-child(7) {
+    animation: music 20s -4s linear infinite;
+}
+.music-div:nth-child(8) {
+    animation: music 20s -4.5s linear infinite;
+}
+.music-div:nth-child(9) {
+    animation: music 20s -5s linear infinite;
+}
+.music-div:nth-child(10) {
+    animation: music 20s -5.5s linear infinite;
+}
+.music-div:nth-child(11) {
+    animation: music 20s -6s linear infinite;
+}
+.music-div:nth-child(12) {
+    animation: music 20s -6.5s linear infinite;
+}
+.music-div:nth-child(13) {
+    animation: music 20s -7s linear infinite;
+}
+.music-div:nth-child(14) {
+    animation: music 20s -7.5s linear infinite;
+}
+.music-div:nth-child(15) {
+    animation: music 20s -8s linear infinite;
+}
+.music-div:nth-child(16) {
+    animation: music 20s -8.5s linear infinite;
+}
+.music-div:nth-child(17) {
+    animation: music 20s -9s linear infinite;
+}
+.music-div:nth-child(18) {
+    animation: music 20s -9.5s linear infinite;
+}
+.music-div:nth-child(19) {
+    animation: music 20s -10s linear infinite;
+}
+.music-div:nth-child(20) {
+    animation: music 20s -10.5s linear infinite;
+}
+.music-div:nth-child(21) {
+    animation: music 20s -11s linear infinite;
+}
+.music-div:nth-child(22) {
+    animation: music 20s -11.5s linear infinite;
+}
+.music-div:nth-child(23){
+    animation: music 20s -12s linear infinite;
+}
+.music-div:nth-child(24) {
+    animation: music 20s -12.5s linear infinite;
+}
+.music-div:nth-child(25) {
+    animation: music 20s -13s linear infinite;
+}
+.music-div:nth-child(26) {
+    animation: music 20s -13.5s linear infinite;
+}
+.music-div:nth-child(27) {
+    animation: music 20s -14s linear infinite;
+}
+.music-div:nth-child(28) {
+    animation: music 20s -14.5s linear infinite;
+}
+.music-div:nth-child(29) {
+    animation: music 20s -15s linear infinite;
+}
+.music-div:nth-child(30) {
+    animation: music 20s -15.5s linear infinite;
+}
+.music-div:nth-child(31) {
+    animation: music 20s -16s linear infinite;
+}
+.music-div:nth-child(32) {
+    animation: music 20s -16.5s linear infinite;
+}
+.music-div:nth-child(33) {
+    animation: music 20s -17s linear infinite;
+}
+.music-div:nth-child(34) {
+    animation: music 20s -17.5s linear infinite;
+}
+.music-div:nth-child(35) {
+    animation: music 20s -18s linear infinite;
+}
+.music-div:nth-child(36) {
+    animation: music 20s -18.5s linear infinite;
+}
+.music-div:nth-child(37) {
+    animation: music 20s -19s linear infinite;
+}
+.music-div:nth-child(38) {
+    animation: music 20s -19.5s linear infinite;
+}
+.music-div:nth-child(39) {
+    animation: music 20s -20s linear infinite;
+}
+.music-div:nth-child(40) {
+    animation: music 5s 0s linear infinite;
+}
+
+@keyframes music {
+    0% {
+        left: -10%;
+        background-color: green;
+        transform: scale(1, 1.5)
+    }
+    2.5% {
+        left: -7%;
+    }
+    5% {
+        left: -4%;
+    }
+    7.5% {
+        left: -1%;
+    }
+    10% {
+        left: 2%;
+    }
+    12.5% {
+        left: 5%;
+    }
+    15% {
+        left: 8%;
+        transform: scale(1, 1)
+    }
+    17.5% {
+        left: 11%;
+    }
+    20% {
+        left: 14%;
+    }
+    22.5% {
+        left: 17%;
+    }
+    25% {
+        left: 20%;
+        background-color: orange;
+        transform: scale(1, 1)
+    }
+    27.5% {
+        left: 23%;
+    }
+    30% {
+        left: 26%;
+    }
+    32.5% {
+        left 29%;
+    }
+    35% {
+        left: 32%;
+        transform: scale(1, 1.5)
+    }
+    37.5% {
+        left: 35%;
+    }
+    40% {
+        left: 38%;
+    }
+    42.5% {
+        left: 41%;
+    }
+    45% {
+        left: 44%;
+    }
+    47.5% {
+        left: 47%;
+    }
+    50% {
+        left: 50%;
+        background-color: red;
+        transform: scale(1, 0.5)
+    }
+    52.5% {
+        left: 53%;
+    }
+    55% {
+        left: 56%;
+    }
+    57.5% {
+        left: 59%;
+    }
+    60% {
+        left: 62%;
+    }
+    62.5% {
+        left: 65%;
+    }
+    65% {
+        left: 68%;
+        transform: scale(1, 0.5)
+    }
+    67.5% {
+        left: 71%;
+    }
+    70% {
+        left: 74%;
+    }
+    72.5% {
+        left: 77%;
+    }
+    75% {
+        left: 80%;
+        background-color: purple;
+        transform: scale(1, 1)
+    }
+    77.5% {
+        left: 83%;
+    }
+    80% {
+        left: 86%;
+    }
+    82.5% {
+        left: 89%;
+    }
+    85% {
+        left: 92%;
+    }
+    87.5% {
+        left: 95%;
+    }
+    90% {
+        left: 98%;
+        transform: scale(1, 2.5)
+    }
+    92.5% {
+        left: 101%;
+    }
+    95% {
+        left: 104%;
+    }
+    97.5% {
+        left: 107%;
+    }
+    100% {
+        left: 110%;
+        background-color: blue;
+        transform: scale(1, 1.5)
+    }
+}
