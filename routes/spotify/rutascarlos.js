@@ -20,13 +20,6 @@ spotifyApi.clientCredentialsGrant()
 
 router.get('/playlist', (req, res, next) => {
   res.send(playlistTracks)
-  // Create a private playlist
-  spotifyApi.createPlaylist('RanDJ Playlist', { 'public' : true })
-  .then(function(data) {
-    console.log('Created playlist!');
-  }, function(err) {
-    console.log('Something went wrong!', err);
-  });
 })
 
 router.get('/', (req, res, next) => {
