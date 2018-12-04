@@ -1,21 +1,7 @@
 const router = require("express").Router();
 const User = require("../../models/User");
 const passport = require("passport");
-var SpotifyWebApi = require('spotify-web-api-node');
 
-
-var spotifyApi = new SpotifyWebApi({
-    clientId : process.env.CLIENT_ID,
-    clientSecret : process.env.CLIENT_SECRET
-});
-
-// Retrieve an access token.
-spotifyApi.clientCredentialsGrant()
-    .then(function(data) {
-        spotifyApi.setAccessToken(data.body['access_token']);
-    }, function(err) {
-        console.log('Something went wrong when retrieving an access token', err);
-    });
 
 
 function ensureAuthenticated(req, res, next) {
@@ -34,7 +20,8 @@ router.get('/',(req,res)=>{
     res.render('music/spotify/index',{user});
 })
 
-router.get('/me',(req,res)=>{
+//never works
+/*router.get('/me',(req,res)=>{
     console.log('Accesss------:',req.app.locals.user.accessToken)
     spotifyApi.setAccessToken(req.app.locals.user.accessToken)
     spotifyApi.getMe()
@@ -43,7 +30,7 @@ router.get('/me',(req,res)=>{
         }, function(err) {
             console.log('Something went wrong!', err);
         });
-})
+})*/
 
 /*router.get('/login', function(req, res) {
     var scopes = 'user-read-private user-read-email';

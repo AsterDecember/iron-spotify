@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('post axios spotify')
         /*axios.post(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
             headers: {
-                "Authorization" : "Bearer "+token,
+                Authorization : "Bearer"+token,
                 'Content-Type': "application/json"
             },
             data:{
@@ -41,18 +41,26 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(function (error) {
                 console.log(error);
             });
-          */
+
+            */
+
         var jsonData = {
-            name: "New Playlist",
+            name: "playlist example",
             public: false,
-            "description": "New playlist description"
+            description: "New playlist description"
         }
-        axios.post({
+        axios({
             method: 'post',
             url: `https://api.spotify.com/v1/users/${user_id}/playlists`,
             data: jsonData,
-            dataType: 'json'
-        })
+            dataType: 'json',
+            headers: {
+                'Authorization' : 'Bearer '+token,
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
     })
 
 
