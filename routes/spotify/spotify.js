@@ -28,11 +28,22 @@ function ensureAuthenticated(req, res, next) {
 
 router.get('/',(req,res)=>{
     console.log(req.app.locals.user)
+    //aqui se guardo el usuario en locals para su uso
     const user = req.app.locals.user
     console.log('usuario:-------',user)
     res.render('music/spotify/index',{user});
 })
 
+router.get('/me',(req,res)=>{
+    console.log('Accesss------:',req.app.locals.user.accessToken)
+    spotifyApi.setAccessToken(req.app.locals.user.accessToken)
+    spotifyApi.getMe()
+        .then(function(data) {
+            console.log('Some information about this user', data.body);
+        }, function(err) {
+            console.log('Something went wrong!', err);
+        });
+})
 
 /*router.get('/login', function(req, res) {
     var scopes = 'user-read-private user-read-email';
