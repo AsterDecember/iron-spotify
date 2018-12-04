@@ -94,11 +94,13 @@ const artistRoutes = require('./routes/spotify/artists')
 const spotifyRoutes = require('./routes/spotify/spotify')
 const examplesRoutes = require('./routes/spotify/examples')
 const carlosRoutes = require('./routes/spotify/rutascarlos')
+const listRoutes = require('./routes/spotify/createList')
 app.use('/albums',albumsRoutes)
 app.use('/artists',artistRoutes)
 app.use('/spotify',spotifyRoutes)
 app.use('/rutascarlos',carlosRoutes)
 app.use('/examples',examplesRoutes)
+app.use('/createList',listRoutes)
 
 
 module.exports = app;

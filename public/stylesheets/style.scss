@@ -95,7 +95,25 @@ footer{
   position: fixed !important;
 }
 .sidenav-trigger img{
-  height: 40px !important;
-  width: 40px !important;
+  height: 60px !important;
+  width: 60px !important;
   margin: 5px;
+}
+.jamberguerg:hover{
+  animation: pulse 1.5s ease-in-out infinite;
+}
+.jamberguerg{
+  padding: 5px;
+}
+
+@keyframes pulse{
+  0%{
+    transform: translateY(-10px);
+  }
+  50%{
+    transform: translateY(10px);
+  }
+  100%{
+    transform: translateY(-10px);
+  }
 }

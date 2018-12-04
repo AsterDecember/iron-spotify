@@ -1,0 +1,10 @@
+<h2>Playlist ready, click to add to your profile</h2>
+
+<div id="container">
+    {{#each auxTracks}}
+        <p>{{ this.name }}</p>
+        <p class="track" hidden>{{ this.uri }}</p>
+    {{/each}}
+</div>
+
+<script src="/javascripts/carlosspotify.js"></script>
