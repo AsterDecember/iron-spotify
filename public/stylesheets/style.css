@@ -3,20 +3,29 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
+.background-img {
+  background-image: url("/images/dark.jpg");
+  width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: -999;
+  overflow-x: hidden; }
+
 a {
   color: #00B7FF; }
 
 .login-page {
   width: 360px;
-  padding: 8% 0 0;
+  padding: 4% 0 0;
   margin: auto; }
 
 .form {
   position: relative;
-  z-index: 1;
   max-width: 360px;
   margin: 0 auto 100px;
-  padding: 45px;
+  padding: 25px;
   text-align: center;
   /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/ }
 
@@ -24,7 +33,7 @@ a {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: rgba(37, 194, 84, 0.7);
   width: 100%;
   border: 0;
   padding: 15px;
@@ -32,14 +41,12 @@ a {
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
-  cursor: pointer;
-  z-index: 10; }
+  cursor: pointer; }
 
 .form button:hover, .form button:active, .form button:focus {
   background: #43A047; }
 
 * {
-  background-color: #191919;
   color: white;
   margin: 0;
   padding: 0; }
@@ -50,5 +57,16 @@ a {
 .login-form {
   background-color: rgba(14, 14, 14, 0.45);
   text-align: center; }
+
+.form img {
+  margin-bottom: 20px; }
+
+.fixBottom {
+  bottom: 1rem;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  color: #6e87af;
+  position: fixed; }
 
 /*# sourceMappingURL=style.css.map */

@@ -5,18 +5,16 @@
 .music-rgba{
     position: relative;
     width: 100%;
-    z-index: -3;
 }
+
 .black-out{
     background-color: rgba(0,0,0,.4);
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 0;
+    z-index: -900;
 }
-.outside{
-    z-index: 999;
-}
+
 .music-div {
     width: 15px;
     height: 60px;
@@ -24,7 +22,9 @@
     border-radius: 10px;
     top: 100px;
     position: absolute;
+    z-index: -990;
 }
+
 .music-div:nth-child(1) {
     animation: music 20s 0s linear infinite;
 }
