@@ -1,15 +1,21 @@
-.carousel img{
-    display: block;
-    margin: 0 auto;
+.collection{
+    border: none !important;
 }
-.carousel{
-    padding-bottom: 5px;
+.collection-item{
+    background-color: rgba(0,0,0,.5) !important;
+    color: white !important;
+    border-bottom: none !important;
 }
-.list-group-item-dark{
-    background-color: rgba(0,0,0,.4);
-    color: white;
-}
-.list-group-item-light{
-    background-color: rgba(0,0,0,.4);
 
+.collection-item:hover {
+    background-color: rgba(255,255,255,.75) !important;
+    color: #616161 !important;
+}
+.dark{
+    color: #616161 !important;
+}
+
+.dark:hover{
+    background-color: #FAFAFA !important;
+    color: black !important;
 }

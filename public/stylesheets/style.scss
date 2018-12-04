@@ -87,3 +87,15 @@ input{
 button{
   color: black;
 }
+footer{
+  margin-top: 5px;
+}
+
+.sidenav-trigger{
+  position: fixed !important;
+}
+.sidenav-trigger img{
+  height: 40px !important;
+  width: 40px !important;
+  margin: 5px;
+}

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // always executed
         });*/
     var button = document.getElementById('go')
-    button.addEventListener('click',()=>{
+    /*button.addEventListener('click',()=>{
         console.log('post axios spotify')
         /*axios.post(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
             headers: {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             */
-
+/*
         var jsonData = {
             name: "playlist example",
             public: false,
@@ -64,5 +64,5 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(err => console.log(err))
     })
 
-
+*/
 }, false);
