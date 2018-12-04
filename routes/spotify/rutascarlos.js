@@ -29,48 +29,42 @@ router.get('/playlist', (req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
-    const {search1, search2, search3} = req.query
-    // const {search3} = req.query
-    var search = search2
-    if(search){
-        spotifyApi.searchArtists(search)
-        .then( data => {
-        let artists = data.body.artists.items
-        buildPlaylist(artists[0])
-        .then(result=>{
-          res.redirect(`/rutascarlos/playlist`)
-        })
-        .catch( error => {
-          console.log(error)
-        })
-        })
-        .catch( error => {
-            console.log(error)
-        })
-    } else{
-        res.render('music/carlos/randj')
+  res.render('music/carlos/randj')
+})
+
+router.post('/', async (req, res, next) => {
+    const {search1, search2, search3} = req.body
+    const search = search2
+    console.log(search)
+    try {
+      const data = await spotifyApi.searchArtists(search)
+      let artists = data.body.artists.items
+      const result = await buildPlaylist(artists[0])
+      console.log(result)
+      if(result){
+        setTimeout(res.redirect(`/rutascarlos/playlist`), 500)
+      }     
+    } catch (error) {
+      console.log(error)
     }
 })
 
 //AUX FUNCTIONS
-const buildPlaylist = artist => {
-  return new Promise((resolve, reject) => {
-    spotifyApi.getArtistRelatedArtists(artist.id)
-    .then( data => {
-        let related = data.body.artists
-        related.push(artist)
-        related.forEach(function(art,idx,array){
-          if(playlistArtist.indexOf(art) === -1){
-            playlistArtist.push(artist.id)
-            topTrack(art.id)
-            if (idx === array.length - 1){
-              resolve(playlistTracks);
-            }
-          }
-        })
-    })
-    .catch( e => {
-        res.send(e)
+const buildPlaylist =  artist => {
+  return new Promise(async (resolve, reject) => {
+    const data = await spotifyApi.getArtistRelatedArtists(artist.id)
+    // console.log(data.body.artists)
+    let related = [...data.body.artists, artist]
+    related.forEach((art,idx,array) => {
+      if(playlistArtist.indexOf(art) === -1){
+        playlistArtist.push(art.id)
+        topTrack(art.id)
+        if (idx === array.length - 1){
+          console.log('track',playlistTracks)
+          console.log('arts',playlistArtist)
+          resolve(playlistTracks);
+        }
+      }
     })
   });
 };
