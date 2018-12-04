@@ -5,12 +5,9 @@ const router = express.Router()
 var playlistArtist = []
 var playlistTracks = []
 
-var clientId = '5a4842ba39bd45a5b95f9b12f7be1a54',
-    clientSecret = '92cef8bf488d4f6d995ab69f7e4f3c7b';
-
 var spotifyApi = new SpotifyWebApi({
-  clientId : clientId,
-  clientSecret : clientSecret
+  clientId : process.env.CLIENT_ID,
+  clientSecret : process.env.CLIENT_SECRET
 });
 
 // Retrieve an access token.
@@ -23,6 +20,13 @@ spotifyApi.clientCredentialsGrant()
 
 router.get('/playlist', (req, res, next) => {
   res.send(playlistTracks)
+  // Create a private playlist
+  spotifyApi.createPlaylist('RanDJ Playlist', { 'public' : true })
+  .then(function(data) {
+    console.log('Created playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
 })
 
 router.get('/', (req, res, next) => {

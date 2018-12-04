@@ -104,5 +104,7 @@ router.get('/getTracks/:id',(req,res)=>{
         });
 })
 
-
+router.get('/carlos',(req,res)=>{
+    res.redirect('/rutascarlos')
+})
 module.exports = router
