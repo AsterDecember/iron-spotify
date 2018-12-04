@@ -36,6 +36,7 @@ router.get(
     '/callback',
     passport.authenticate('spotify', { failureRedirect: '/login' }),
     function(req, res) {
+        
         req.app.locals.user = req.user
         res.redirect('/spotify');
     }
@@ -45,4 +46,7 @@ router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
 });
+
+
+
 module.exports = router;

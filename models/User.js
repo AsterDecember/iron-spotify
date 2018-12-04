@@ -10,6 +10,8 @@ const userSchema = new Schema({
     uri : String,
     country : String,
     product : String,
+    refreshToken : String,
+    accessToken : String,
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -28,6 +30,8 @@ userSchema.statics.findOrCreate = function findOrCreate(profile, cb){
             userObj.country = profile.profile.country;
             userObj.uri = profile.profile.uri;
             userObj.product = profile.profile.product;
+            userObj.accessToken = profile.accessToken
+            userObj.refreshToken = profile.refreshToken
             console.log("producto",profile.profile)
             console.log("obkj",userObj)
             //....

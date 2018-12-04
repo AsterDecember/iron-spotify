@@ -23,8 +23,10 @@ passport.use(
             callbackURL: (process.env.URI || 'http://localhost:3000/auth/callback')
         },
         function(accessToken, refreshToken, expires_in, profile, done) {
-            console.log(profile)
-            User.findOrCreate({ profile }, function(err, user) {
+            console.log('acces:',accessToken)
+            console.log('refresh:',refreshToken)
+
+            User.findOrCreate({ profile,accessToken,refreshToken}, function(err, user) {
                 return done(err, user);
             });
         }
