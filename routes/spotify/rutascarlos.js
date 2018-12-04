@@ -19,7 +19,8 @@ spotifyApi.clientCredentialsGrant()
 });
 
 router.get('/playlist', (req, res, next) => {
-  res.send(playlistTracks)
+  // res.send(playlistTracks)
+  res.render('music/carlos/playlist',{playlistTracks})
 })
 
 router.get('/', (req, res, next) => {
@@ -54,6 +55,7 @@ const buildPlaylist = artist => {
     spotifyApi.getArtistRelatedArtists(artist.id)
     .then( data => {
         let related = data.body.artists
+        related.push(artist)
         related.forEach(function(art,idx,array){
           if(playlistArtist.indexOf(art) === -1){
             playlistArtist.push(artist.id)
@@ -76,7 +78,7 @@ const topTrack = artist => {
   .then(function(data) {
     // console.log(data.body);
     let tracks = data.body.tracks
-    playlistTracks.push(tracks[2].id)
+    playlistTracks.push(tracks[2].uri)
     }, function(err) {
     console.log('Something went wrong!', err);
   });
