@@ -19,7 +19,6 @@ spotifyApi.clientCredentialsGrant()
 });
 
 router.get('/playlist', (req, res, next) => {
-  // res.send(playlistTracks)
   //Aux used to pass tracks list to template and then clean it
   var auxTracks = playlistTracks
   res.render('music/carlos/playlist',{auxTracks})
@@ -42,7 +41,8 @@ router.post('/', async (req, res, next) => {
       const result = await buildPlaylist(artists[0])
       console.log(result)
       if(result){
-        setTimeout(res.redirect(`/rutascarlos/playlist`), 500)
+        // setTimeout(()=>res.redirect(`/rutascarlos/playlist`), 500)
+        res.redirect(`/rutascarlos/playlist`)
       }     
     } catch (error) {
       console.log(error)
@@ -55,37 +55,34 @@ const buildPlaylist =  artist => {
     const data = await spotifyApi.getArtistRelatedArtists(artist.id)
     // console.log(data.body.artists)
     let related = [...data.body.artists, artist]
-    related.forEach((art,idx,array) => {
+    related.forEach(async (art,idx,array) => {
       if(playlistArtist.indexOf(art) === -1){
         playlistArtist.push(art.id)
-        topTrack(art.id)
+        const topT = await topTrack(art.id)
+        playlistTracks.push(topT)
         if (idx === array.length - 1){
           console.log('track',playlistTracks)
-          console.log('arts',playlistArtist)
+          // console.log('arts',playlistArtist)
           resolve(playlistTracks);
         }
       }
     })
-  });
+  })
 };
 
 // Get artist top tracks
 const topTrack = artist => {
-  spotifyApi.getArtistTopTracks(artist, 'MX')
-  .then(function(data) {
-    // console.log(data.body);
+  return new Promise(async (resolve, reject) => {
+    const data = await spotifyApi.getArtistTopTracks(artist, 'MX')
     let tracks = data.body.tracks
     // playlistTracks.push(tracks[2].uri)
-    playlistTracks.push(
-      {
-        name:tracks[2].name,
-        uri:tracks[2].uri,
-        artists:tracks[2].artists
-      }
-    )
-    }, function(err) {
-    console.log('Something went wrong!', err);
-  });
+    var topT = {
+      name:tracks[2].name,
+      uri:tracks[2].uri,
+      artists:tracks[2].artists
+    }
+    resolve(topT)
+  })
 }
 
 module.exports = router
