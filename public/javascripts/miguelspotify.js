@@ -1,5 +1,7 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    console.log('Working!!');
-
+    console.log('router.locals');
+    console.log()
 }, false);

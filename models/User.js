@@ -32,8 +32,8 @@ userSchema.statics.findOrCreate = function findOrCreate(profile, cb){
             userObj.product = profile.profile.product;
             userObj.accessToken = profile.accessToken
             userObj.refreshToken = profile.refreshToken
-            console.log("producto",profile.profile)
-            console.log("obkj",userObj)
+            //console.log("producto",profile.profile)
+            //console.log("obkj",userObj)
             //....
             userObj.save(cb);
         }else{

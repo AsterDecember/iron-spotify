@@ -27,8 +27,10 @@ function ensureAuthenticated(req, res, next) {
 }
 
 router.get('/',(req,res)=>{
-
-    res.render('music/spotify/index');
+    console.log(req.app.locals.user)
+    const user = req.app.locals.user
+    console.log('usuario:-------',user)
+    res.render('music/spotify/index',{user});
 })
 
 
@@ -91,7 +93,5 @@ router.get('/getTracks/:id',(req,res)=>{
         });
 })
 
-router.get('/token',(req,res)=>{
 
-})
 module.exports = router

@@ -76,6 +76,12 @@ app.use(session({
 }))
 app.use(flash());
 
+//tener user en locals
+app.use(function(req, res, next){
+    res.locals.user = req.user;
+    /*res.locals.authenticated = ! req.user.anonymous;*/
+    next();
+});
 
 const index = require('./routes/index');
 app.use('/', index);
