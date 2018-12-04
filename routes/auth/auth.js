@@ -6,7 +6,7 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.redirect('/login');
+    res.redirect('/');
 }
 
 //-------------------- PASSPORT SPOTIFY-------------------
@@ -36,8 +36,8 @@ router.get(
     '/callback',
     passport.authenticate('spotify', { failureRedirect: '/login' }),
     function(req, res) {
-
-        res.redirect('/');
+        req.app.locals.user = req.user
+        res.redirect('/spotify');
     }
 );
 

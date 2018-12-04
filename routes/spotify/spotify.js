@@ -18,10 +18,19 @@ spotifyApi.clientCredentialsGrant()
     });
 
 
+function ensureAuthenticated(req, res, next) {
+    console.log(req.isAuthenticated())
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/');
+}
+
 router.get('/',(req,res)=>{
 
     res.render('music/spotify/index');
 })
+
 
 /*router.get('/login', function(req, res) {
     var scopes = 'user-read-private user-read-email';

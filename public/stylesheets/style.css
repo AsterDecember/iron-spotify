@@ -39,7 +39,8 @@ a {
   background: #43A047; }
 
 * {
-  background-color: #252525; }
+  background-color: #252525;
+  color: white; }
 
 .form {
   background-color: #252525; }
