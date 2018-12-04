@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(user_id)
     //aqui se guardo el accessToken en localstorage para usarlo en js normal
     window.localStorage.setItem('my_token',token)
+    window.localStorage.setItem('id_spotify',user_id)
     /*axios.get('http://localhost:3000/spotify/axios')
         .then(function (response) {
             // handle success
