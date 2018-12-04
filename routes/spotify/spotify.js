@@ -104,5 +104,7 @@ router.get('/getTracks/:id',(req,res)=>{
         });
 })
 
-
+router.get('/axios',(req,res) => {
+    res.json(req.app.locals.user)
+})
 module.exports = router
