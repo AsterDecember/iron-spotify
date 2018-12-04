@@ -107,7 +107,7 @@ router.get('/getTracks/:id',(req,res)=>{
 
 router.get('/carlos',(req,res)=>{
     res.redirect('/rutascarlos')
-
+})
 router.get('/axios',(req,res) => {
     res.json(req.app.locals.user)
 })
