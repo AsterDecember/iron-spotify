@@ -20,7 +20,11 @@ spotifyApi.clientCredentialsGrant()
 
 router.get('/playlist', (req, res, next) => {
   // res.send(playlistTracks)
-  res.render('music/carlos/playlist',{playlistTracks})
+  //Aux used to pass tracks list to template and then clean it
+  var auxTracks = playlistTracks
+  res.render('music/carlos/playlist',{auxTracks})
+  //Reset for a clean playlist
+  playlistTracks = []
 })
 
 router.get('/', (req, res, next) => {
@@ -29,12 +33,8 @@ router.get('/', (req, res, next) => {
         spotifyApi.searchArtists(search)
         .then( data => {
         let artists = data.body.artists.items
-        // res.send(artists[0])
-        // res.redirect(`/rutascarlos/relatedArtists/${artists[0].id}`)
-        // relatedArtists(artists[0])
         buildPlaylist(artists[0])
         .then(result=>{
-          // console.log(result)
           res.redirect(`/rutascarlos/playlist`)
         })
         .catch( error => {

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var tracksUris = []
   var button = document.createElement('button')
   button.innerHTML = "Music NOW!"
-  button.innerHTML = user_id
+  // button.innerHTML = user_id
   document.body.appendChild(button)
   button.addEventListener('click',()=>{
     console.log('post carlos axios spotify')
@@ -57,7 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(res => {
         console.log(res)
-        tracksUris = []
+        var container = document.querySelectorAll('#container')
+        container.innerHTML = ''
+        var openPlaylistUrl = `http://open.spotify.com/user/${user_id}/playlist/${playlist_id}`
+        var listenNow = document.createElement('a');
+        // container.appendChild(listenNow);
+        document.body.appendChild(listenNow)
+        listenNow.setAttribute('href', openPlaylistUrl)
+        listenNow.innerHTML = "Listen NOW!"
+        // button.innerHTML = user_id
+        // document.body.appendChild(button)
       })
       .catch(err => console.log(err))
   }
