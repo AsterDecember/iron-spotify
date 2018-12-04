@@ -25,10 +25,13 @@ router.get('/playlist', (req, res, next) => {
   res.render('music/carlos/playlist',{auxTracks})
   //Reset for a clean playlist
   playlistTracks = []
+  playlistArtist = []
 })
 
 router.get('/', (req, res, next) => {
-    const {search} = req.query
+    const {search1, search2, search3} = req.query
+    // const {search3} = req.query
+    var search = search2
     if(search){
         spotifyApi.searchArtists(search)
         .then( data => {
@@ -78,7 +81,14 @@ const topTrack = artist => {
   .then(function(data) {
     // console.log(data.body);
     let tracks = data.body.tracks
-    playlistTracks.push(tracks[2].uri)
+    // playlistTracks.push(tracks[2].uri)
+    playlistTracks.push(
+      {
+        name:tracks[2].name,
+        uri:tracks[2].uri,
+        artists:tracks[2].artists
+      }
+    )
     }, function(err) {
     console.log('Something went wrong!', err);
   });
