@@ -2,8 +2,12 @@
 
 <div id="container">
 {{#each auxTracks}}
-<p>{{ this.name }}</p>
-<p class="track" hidden>{{ this.uri }}</p>
+<div style="text-align:center;">
+  <p>{{ this.name }} by {{ this.artists.[0].name }}</p>
+  <img src="{{ this.album.images.[0].url }}" alt="album pic" width="150" style="display:block; margin:0 auto;">
+  <audio src="{{ this.preview_url }}" controls></audio>
+  <p class="track" hidden>{{ this.uri }}</p>
+</div>
 {{/each}}
 </div>
 

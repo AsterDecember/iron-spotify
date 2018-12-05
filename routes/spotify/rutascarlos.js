@@ -79,7 +79,9 @@ const topTrack = artist => {
     var topT = {
       name:tracks[2].name,
       uri:tracks[2].uri,
-      artists:tracks[2].artists
+      artists:tracks[2].artists,
+      album:tracks[2].album,
+      preview_url:tracks[2].preview_url	
     }
     resolve(topT)
   })
