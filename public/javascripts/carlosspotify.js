@@ -1,13 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('router.locals');
-  //aqui se guardo el accessToken en localstorage para usarlo en js normal
+  //aquí se guardó el accessToken en localstorage para usarlo en js normal
   var token = window.localStorage.getItem('my_token')
   var user_id = window.localStorage.getItem('id_spotify')
   var tracksUris = []
   var button = document.querySelector('#musicnow')
   button.innerHTML = "Add to Spotify"
-  // button.innerHTML = user_id
-  // document.body.appendChild(button)
   button.addEventListener('click',()=>{
     console.log('Create playlist in Spotify profile')
     var jsonData = {
@@ -59,7 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = ''
         var openPlaylistUrl = `http://open.spotify.com/user/${user_id}/playlist/${playlist_id}`
         var listenNow = document.createElement('a');
-        document.body.appendChild(listenNow)
+        var carousel = document.querySelector('#musicnow-container')
+        carousel.appendChild(listenNow)
         listenNow.setAttribute('href', openPlaylistUrl)
         listenNow.innerHTML = "Listen NOW!"
         // addCover(playlist_id)

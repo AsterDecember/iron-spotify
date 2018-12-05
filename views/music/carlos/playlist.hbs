@@ -1,4 +1,3 @@
-<h2>Playlist ready, click to add to your profile</h2>
 
 <div class="container">
     <div id="hidden" style="display: none">
@@ -14,7 +13,11 @@
 
 
     </div>
-    <button id="musicnow">Music NOW!</button>
+    <div id="musicnow-container">
+        <button id="musicnow" class="btn waves-effect waves-light" type="submit" name="action">Music Now!
+        <i class="material-icons right"></i>
+    </button>
+    </div>
     <ul class="collection ">
         {{#each auxTracks}}
         <li class="collection-item dark">
