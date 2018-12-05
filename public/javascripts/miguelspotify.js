@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    console.log('router.locals');
+    console.log('setting localstorage');
 
     var token= document.getElementById('token').value
     var user_id= document.getElementById('id').value

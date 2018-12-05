@@ -29,7 +29,9 @@ router.get('/playlist', (req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
-    res.render('music/input')
+    console.log(req.app.locals.user)
+    const user = req.app.locals.user
+    res.render('music/input',{user})
 })
 
 router.post('/', async (req, res, next) => {
