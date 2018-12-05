@@ -1,14 +1,35 @@
 <h2>Playlist ready, click to add to your profile</h2>
 
-<div id="container">
-{{#each auxTracks}}
-<div style="text-align:center;">
-  <p>{{ this.name }} by {{ this.artists.[0].name }}</p>
-  <img src="{{ this.album.images.[0].url }}" alt="album pic" width="150" style="display:block; margin:0 auto;">
-  <audio src="{{ this.preview_url }}" controls></audio>
-  <p class="track" hidden>{{ this.uri }}</p>
+<div class="container">
+    <div id="hidden" style="display: none">
+        <input type="text" id="id" value="{{user.id}}" style="display: none">
+        <input id="token" type="text" value="{{user.accessToken}}" style="display: none">
+    </div>
+    <div class="carousel">
+        {{#each auxTracks}}
+
+            <a class="carousel-item" href="#"><img src="{{this.album.images.[0].url}}"></a>
+
+        {{/each}}
+
+
+    </div>
+    <button id="musicnow">Music NOW!</button>
+    <ul class="collection ">
+        {{#each auxTracks}}
+        <li class="collection-item dark">
+            <div class="control-ement">
+                <span>{{ this.name }} by {{ this.artists.[0].name }}</span>
+                <audio src="{{ this.preview_url }}" controls></audio>
+                <span class="track" hidden>{{ this.uri }}</span>
+            </div>
+        </li>
+        {{/each}}
+
+    </ul>
 </div>
-{{/each}}
-</div>
+
+<script src="/javascripts/miguelspotify.js"></script>
+<script src="/javascripts/list.js"></script>
 
 <script src="/javascripts/carlosspotify.js"></script>

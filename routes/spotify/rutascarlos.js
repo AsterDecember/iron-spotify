@@ -62,7 +62,7 @@ router.post('/', async (req, res, next) => {
         const data = await spotifyApi.searchTracks(search2)
         let artists = data.body.tracks.items[0].artists
         const result = await buildPlaylist(artists[0])
-        console.log(result)
+        // console.log(result)
         if(result){
           // setTimeout(()=>res.redirect(`/rutascarlos/playlist`), 500)
           res.redirect(`/rutascarlos/playlist`)
@@ -89,7 +89,7 @@ const buildPlaylist =  artist => {
         const topT = await topTrack(art.id)
         playlistTracks.push(topT)
         if (idx === array.length - 1){
-          console.log('track',playlistTracks)
+          // console.log('track',playlistTracks)
           // console.log('arts',playlistArtist)
           resolve(playlistTracks);
         }
