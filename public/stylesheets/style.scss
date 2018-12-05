@@ -36,12 +36,13 @@ a {
   /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
 }
 
-.form button {
+.form-button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
+  text-align: center;
   outline: 0;
   background: rgba(37,194,84,.7);
-  width: 100%;
+  width: 40%;
   border: 0;
   padding: 15px;
   color: #FFFFFF;
@@ -51,7 +52,7 @@ a {
   cursor: pointer;
 }
 
-.form button:hover,.form button:active,.form button:focus {
+.form-button:hover,.form button:active,.form button:focus {
   background: #43A047;
 }
 
@@ -59,12 +60,11 @@ a {
   //background-color: rgb(25,25,25);
   margin: 0;
   padding: 0;
+  font-family: 'Roboto';
+  font-weight: bold;
 }
-.form{
-  background-color: rgba(14,14,14,.45);
-}
+
 .login-form{
-  background-color: rgba(14,14,14,.45);
   text-align: center;
 }
 
