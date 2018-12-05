@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var jsonData = {
         name: "Ran Dj Playlist",
         public: false,
-        description: "Playlis curated by Ran Dj"
+        description: "Playlist curated by Ran Dj create yours at http://localhost:3000"
     }
     axios({
         method: 'post',
