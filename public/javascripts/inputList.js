@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.localStorage.setItem('photoUrl',photoUrl)
     window.localStorage.setItem('displayName',displayName)
 
-    var example = window.localStorage.getItem('displayName');
-    console.log('ejemplo:',example)
     var elems = document.querySelectorAll('.autocomplete');
     var instances = M.Autocomplete.init(elems,{
         data:{

@@ -102,4 +102,7 @@ footer {
 input {
   color: white; }
 
+span {
+  font-weight: bold !important; }
+
 /*# sourceMappingURL=style.css.map */
