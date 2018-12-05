@@ -21,6 +21,7 @@ spotifyApi.clientCredentialsGrant()
 router.get('/playlist', (req, res, next) => {
     //Aux used to pass tracks list to template and then clean it
     var auxTracks = playlistTracks
+    console.log(auxTracks)
     res.render('music/list',{auxTracks})
     //Reset for a clean playlist
     playlistTracks = []
@@ -28,7 +29,7 @@ router.get('/playlist', (req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
-    res.render('music/carlos/randj')
+    res.render('music/input')
 })
 
 router.post('/', async (req, res, next) => {
