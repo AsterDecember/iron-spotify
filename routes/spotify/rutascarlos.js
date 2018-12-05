@@ -31,22 +31,50 @@ router.get('/', (req, res, next) => {
   res.render('music/carlos/randj')
 })
 
+//Search1 -> Artist
+//Search2 -> Song
+//Search3 -> Mood: [peda, workout, tranqui]
 router.post('/', async (req, res, next) => {
-    const {search1, search2, search3} = req.body
-    const search = search2
-    console.log(search)
-    try {
-      const data = await spotifyApi.searchArtists(search)
-      let artists = data.body.artists.items
-      const result = await buildPlaylist(artists[0])
-      console.log(result)
-      if(result){
-        // setTimeout(()=>res.redirect(`/rutascarlos/playlist`), 500)
-        res.redirect(`/rutascarlos/playlist`)
-      }     
-    } catch (error) {
-      console.log(error)
-    }
+  let query = 0
+  const {search1, search2, search3} = req.body
+  if(search1 && !search2) query = 1
+  if(!search1 && search2) query = 2
+  switch(query) {
+    case 1:
+      console.log(search1)
+      try {
+        const data = await spotifyApi.searchArtists(search1)
+        let artists = data.body.artists.items
+        const result = await buildPlaylist(artists[0])
+        console.log(result)
+        if(result){
+          // setTimeout(()=>res.redirect(`/rutascarlos/playlist`), 500)
+          res.redirect(`/rutascarlos/playlist`)
+        }     
+      } catch (error) {
+        console.log(error)
+      }
+    break;
+    case 2:
+      console.log(search2)
+      // Search tracks whose name, album or artist contains search2 value
+      try {
+        const data = await spotifyApi.searchTracks(search2)
+        let artists = data.body.tracks.items[0].artists
+        const result = await buildPlaylist(artists[0])
+        console.log(result)
+        if(result){
+          // setTimeout(()=>res.redirect(`/rutascarlos/playlist`), 500)
+          res.redirect(`/rutascarlos/playlist`)
+        }     
+      } catch (error) {
+        console.log(error)
+      }
+    break;
+    default:
+      res.redirect(`/rutascarlos`)
+    break;
+  }
 })
 
 //AUX FUNCTIONS

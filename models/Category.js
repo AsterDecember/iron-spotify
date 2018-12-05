@@ -3,8 +3,11 @@ const Schema = mongoose.Schema;
 
 const categorySchema = new Schema(
     {
-        name: String,
-        id: String,
+        name: {
+            type:String,
+            enum:["peda","workout","tranqui"]
+        },
+        genres: [String],
     },
     {
         timestamps: {
