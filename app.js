@@ -65,7 +65,7 @@ hbs.registerHelper('ifUndefined', (value, options) => {
 hbs.registerPartials(__dirname+'/views/partials')
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Ran_Dj The music you need';
 
 
 // Enable authentication using session + passport
