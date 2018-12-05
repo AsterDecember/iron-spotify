@@ -1,11 +1,33 @@
-<div class="container">
-    <h2>MIkes list playlist</h2>
 
-    <div id="container">
-        {{#each auxTracks}}
-            <p>{{ this.name }}</p>
-            <p class="track" hidden>{{ this.uri }}</p>
-        {{/each}}
+<div class="container">
+    <div id="hidden" style="display: none">
+        <input type="text" id="id" value="{{user.id}}" style="display: none">
+        <input id="token" type="text" value="{{user.accessToken}}" style="display: none">
     </div>
+    <div class="carousel">
+        {{#each auxTracks}}
+
+            <a class="carousel-item" href="#"><img src="{{this.album.images.[0].url}}"></a>
+
+        {{/each}}
+
+
+    </div>
+    <ul class="collection ">
+        {{#each auxTracks}}
+        <li class="collection-item dark">
+            <div class="control-ement">
+                <span>{{ this.name }} by {{ this.artists.[0].name }}</span>
+                <audio src="{{ this.preview_url }}" controls></audio>
+                <span class="track" hidden>{{ this.uri }}</span>
+            </div>
+        </li>
+        {{/each}}
+
+    </ul>
 </div>
+
+<script src="/javascripts/miguelspotify.js"></script>
+<script src="/javascripts/list.js"></script>
+
 <script src="/javascripts/carlosspotify.js"></script>

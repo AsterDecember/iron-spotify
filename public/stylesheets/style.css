@@ -48,7 +48,6 @@ a {
   background: #43A047; }
 
 * {
-  color: white;
   margin: 0;
   padding: 0; }
 
@@ -100,5 +99,8 @@ footer {
     transform: translateY(10px); }
   100% {
     transform: translateY(1px); } }
+
+input {
+  color: white; }
 
 /*# sourceMappingURL=style.css.map */

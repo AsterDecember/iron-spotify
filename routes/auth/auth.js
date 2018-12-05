@@ -39,7 +39,7 @@ router.get(
 
         req.app.locals.user = req.user
         //console.log(req.app.locals.user)
-        res.redirect('/spotify');
+        res.redirect('/createList');
     }
 );
 

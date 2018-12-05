@@ -19,3 +19,11 @@
     background-color: #FAFAFA !important;
     color: black !important;
 }
+.control-ement{
+    display: flex;
+    justify-content: space-between;
+}
+
+div:hover{
+    color: black;
+}

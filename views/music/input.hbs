@@ -1,9 +1,20 @@
-<div class="home">
+
+<div class="container">
     <form action="/createList" method="POST">
-        <input class="input" type="text" name="search1" placeholder="Artist/Band">
-        <input class="input" type="text" name="search2" placeholder="Artist/Band">
-        <input class="input" type="text" name="search3" placeholder="Song">
-        <input class="submit" type="submit" value="Search for an Artist">
+    <div class="row">
+        <div class="col s8">
+            <div class="input-field col s12">
+
+
+                    <input type="text" id="autocomplete-input" name="search2" class="autocomplete">
+                <label for="autocomplete-input"><i class="material-icons prefix">Artist/Band</i></label>
+                <input class="submit" type="submit" value="Search for an Artist">
+
+            </div>
+        </div>
+    </div>
     </form>
 </div>
 
+<script src="/javascripts/inputList.js"></script>
+<script src="/javascripts/carlosspotify.js"></script>
