@@ -38,6 +38,7 @@ router.get(
     function(req, res) {
 
         req.app.locals.user = req.user
+        console.log(req.user)
         //console.log(req.app.locals.user)
         res.redirect('/createList');
     }

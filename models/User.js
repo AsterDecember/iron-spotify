@@ -12,6 +12,7 @@ const userSchema = new Schema({
     product : String,
     refreshToken : String,
     accessToken : String,
+    photoUrl : String,
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -32,7 +33,7 @@ userSchema.statics.findOrCreate = function findOrCreate(profile, cb){
             userObj.product = profile.profile.product;
             userObj.accessToken = profile.accessToken
             userObj.refreshToken = profile.refreshToken
-            //console.log("producto",profile.profile)
+            userObj.photoUrl = profile.profile.photos[0]
             //console.log("obkj",userObj)
             //....
             userObj.save(cb);
