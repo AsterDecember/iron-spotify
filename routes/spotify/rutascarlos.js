@@ -42,41 +42,27 @@ router.post('/', async (req, res, next) => {
   if(search1 && search2) query = 3
   switch(query) {
     case 1:
-      console.log(search1)
+      console.log("Artist:", search1)
       try {
-        const data = await spotifyApi.searchArtists(search1)
-        let artists = data.body.artists.items
-        const result = await buildPlaylist(artists[0])
-        console.log(result)
-        if(result){
-          // setTimeout(()=>res.redirect(`/rutascarlos/playlist`), 500)
-          res.redirect(`/rutascarlos/playlist`)
-        }     
+        const resultByArtist = await searchByArtist(search1)
+        if(resultByArtist) res.redirect(`/rutascarlos/playlist`)
+        else{
+          // res.redirect(`/rutascarlos`)
+          res.render('music/carlos/randj',{error: "No results for your search, try something else"})
+        }
       } catch (error) {
         console.log(error)
       }
     break;
     case 2:
-      console.log(search2)
-      // Search tracks whose name, album or artist contains search2 value
+    console.log("Track:", search2)
       try {
-        const data = await spotifyApi.searchTracks(search2)
-        let track = data.body.tracks.items[0]
-        const result = await buildPlaylist(track.artists[0])
-        playlistTracks.push(
-          {
-            name:track.name,
-            uri:track.uri,
-            artists:track.artists,
-            album:track.album,
-            preview_url:track.preview_url	
-          }
-        )
-        // console.log(result)
-        if(result){
-          // setTimeout(()=>res.redirect(`/rutascarlos/playlist`), 500)
-          res.redirect(`/rutascarlos/playlist`)
-        }     
+        const resultByTrack = await searchByTrack(search2)
+        if(resultByTrack) res.redirect(`/rutascarlos/playlist`)
+        else{
+          // res.redirect(`/rutascarlos`)
+          res.render('music/carlos/randj',{error: "No results for your search, try something else"})
+        }   
       } catch (error) {
         console.log(error)
       }
@@ -87,10 +73,13 @@ router.post('/', async (req, res, next) => {
         const resultByArtist = await searchByArtist(search1)
         const resultByTrack = await searchByTrack(search2)
         playlistTracks = await shuffle(playlistTracks)
-        if(resultByTrack){
+        if(resultByTrack || resultByArtist){
           // setTimeout(()=>res.redirect(`/rutascarlos/playlist`), 500)
           res.redirect(`/rutascarlos/playlist`)
-        }     
+        } 
+        else{
+          res.redirect(`/rutascarlos`)
+        }    
       } catch (error) {
         console.log(error)
       }
@@ -113,24 +102,42 @@ function shuffle(a) {
   return a;
 }
 
-const searchByArtist = async (search1) => {
-  const data = await spotifyApi.searchArtists(search1)
-  let artists = data.body.artists.items
-  const result = await buildPlaylist(artists[0])
-  return result
+// Search artists whose name contains search value
+const searchByArtist = async (search) => {
+  const data = await spotifyApi.searchArtists(search)
+  //If there are no artists, it should try a different search
+  if(data.body.artists.total > 0){
+    let artists = data.body.artists.items
+    const result = await buildPlaylist(artists[0])
+    return result
+  }
+  else return false
 }
 
-const searchByTrack = async (search2) => {
-  const data = await spotifyApi.searchTracks(search2)
-  let track = data.body.tracks.items[0]
-  const result = await buildPlaylist(track.artists[0])
-  return result
+// Search tracks whose name, album or artist contains search value
+const searchByTrack = async (search) => {
+  const data = await spotifyApi.searchTracks(search)
+  //If there are no tracks, it should try a different search
+  if(data.body.tracks.total > 0){
+    let track = data.body.tracks.items[0]
+    playlistTracks.push(
+          {
+            name:track.name,
+            uri:track.uri,
+            artists:track.artists,
+            album:track.album,
+            preview_url:track.preview_url	
+          }
+        )
+    const result = await buildPlaylist(track.artists[0])
+    return result
+  }
+  else return false
 }
 
 const buildPlaylist =  artist => {
   return new Promise(async (resolve, reject) => {
     const data = await spotifyApi.getArtistRelatedArtists(artist.id)
-    // console.log(data.body.artists)
     let related = [...data.body.artists, artist]
     related.forEach(async (art,idx,array) => {
       if(playlistArtist.indexOf(art) === -1){
@@ -140,19 +147,18 @@ const buildPlaylist =  artist => {
         if (idx === array.length - 1){
           // console.log('track',playlistTracks)
           // console.log('arts',playlistArtist)
-          resolve(playlistTracks);
+          resolve(playlistTracks)
         }
       }
     })
   })
-};
+}
 
 // Get artist top tracks
 const topTrack = artist => {
   return new Promise(async (resolve, reject) => {
     const data = await spotifyApi.getArtistTopTracks(artist, 'MX')
     let tracks = data.body.tracks
-    // playlistTracks.push(tracks[2].uri)
     var topT = {
       name:tracks[2].name,
       uri:tracks[2].uri,

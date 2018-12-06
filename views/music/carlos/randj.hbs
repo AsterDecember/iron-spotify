@@ -2,7 +2,10 @@
   <form action="/rutascarlos" method="POST">
     <input class="input" type="text" name="search1" placeholder="Artist/Band">
     <input class="input" type="text" name="search2" placeholder="Song">
-    <input class="input" type="text" name="search3" placeholder="Mood">
+    {{!-- <input class="input" type="text" name="search3" placeholder="Mood"> --}}
     <input class="submit" type="submit" value="Show me the playlist!">
   </form>
 </div>
+{{#if error}}
+<h3 class="error" style="color:red;">{{error}}</h3>
+{{/if}}
