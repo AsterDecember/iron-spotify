@@ -105,4 +105,10 @@ input {
 span {
   font-weight: bold !important; }
 
+.row {
+  margin-bottom: 0 !important; }
+
+.formula {
+  word-spacing: .5em; }
+
 /*# sourceMappingURL=style.css.map */
