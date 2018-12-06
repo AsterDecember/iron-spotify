@@ -18,6 +18,25 @@ spotifyApi.clientCredentialsGrant()
     console.log('Something went wrong when retrieving an access token', err);
 });
 
+//RUTAS
+router.get('/playlist/detail/:id', async (req, res, next) => {
+  // Get a playlist spotify:user:12100021718:playlist:4JO03ev8mUP7p5izdaAV6f
+  // spotify:user:12100021718:playlist:5TR1OqL90sFUfxIbYtaCy4
+  const {id} = req.params
+  try {
+    const data = await spotifyApi.getPlaylist(id)
+    const auxTracks = data.body.tracks.items
+    if(auxTracks){
+      res.render('music/carlos/detail',{auxTracks})
+      // res.send(auxTracks)
+    } 
+    else res.send(error)
+  } catch (error) {
+    console.log(error)
+  }
+  // res.render('music/carlos/detail',{auxTracks})
+})
+
 router.get('/playlist', (req, res, next) => {
   //Aux used to pass tracks list to template and then clean it
   var auxTracks = playlistTracks
