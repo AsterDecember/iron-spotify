@@ -13,16 +13,30 @@ function ensureAuthenticated(req, res, next) {
 }
 
 //this route saves playlist
-router.get('/savePlaylist/:id',(req,res,next)=>{
-    const {id} = req.params
-    Playlist.create({id: id})
-        .then(result => console.log(result))
+router.post('/savePlaylist',(req,res,next)=>{
+    console.log('info de lo que se guarda en la db',req.body)
+    const playlist = req.body
+    Playlist.create(playlist)
+        .then(result => {
+            console.log('Se guardo la playlit!!!---------------////')
+            console.log(result)
+            console.log(req.app.locals.user)
+            User.findByIdAndUpdate(req.app.locals.user._id,{
+                $push: {
+                    playlists: result._id
+                }
+
+            })
+                .then(result => console.log('exito',result))
+                .catch(e => console.log(e))
+
+        })
         .catch(e => console.log(e))
 })
 
 
 router.get('/',(req,res)=>{
-    console.log(req.app.locals.user)
+    //console.log(req.app.locals.user)
     //aqui se guardo el usuario en locals para su uso
     const user = req.app.locals.user
     console.log('usuario:-------',user)

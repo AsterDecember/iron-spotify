@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const playlistSchema = new Schema(
     {
-        name: {
+        id: {
             type:String,
-            enum:["peda","workout","tranqui"]
+            required:true
         },
-        genres: [String],
+        userId:String
     },
     {
         timestamps: {

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var jsonData = {
         name: "Ran Dj Playlist",
         public: false,
-        description: "Playlist curated by Ran Dj create yours at https://ran-dj.herokuapp.com"
+        description: "Playlist created by Ran Dj create yours at https://ran-dj.herokuapp.com"
     }
     axios({
         method: 'post',
@@ -27,7 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
           var playlist_id = res.data.id
             //here i have to save the playlist
-            axios.get(`http://localhost:3000/spotify/savePlaylist/${playlist_id}`)
+            const playlistOBj = {
+                id : playlist_id,
+                userId :  window.localStorage.getItem('id_spotify')
+            }
+            axios.post('http://localhost:3000/spotify/savePlaylist',playlistOBj)
+                .then(result => console.log(result))
+                .catch(e => console.log(e))
           tracksUris = []
           document.querySelectorAll('.track').forEach(function(track,idx,array){
             tracksUris.push(track.innerHTML)
