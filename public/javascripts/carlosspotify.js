@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
           var playlist_id = res.data.id
             //here i have to save the playlist
             const playlistOBj = {
-                id : playlist_id,
+                spotifyId : playlist_id,
                 userId :  window.localStorage.getItem('id_spotify')
             }
             axios.post('http://localhost:3000/spotify/savePlaylist',playlistOBj)

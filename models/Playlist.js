@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const playlistSchema = new Schema(
     {
-        id: {
+        spotifyId: {
             type:String,
             required:true
         },

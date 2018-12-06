@@ -1,9 +1,9 @@
 <div class="container">
     <h1 class="title-white">Your playlist</h1>
 <ul class="collection ">
-    {{#each playlists}}
+    {{#each user.playlists}}
         <li class="collection-item dark">
-            <a href="/showList/{{this}}"><span>Here goes a playlist {{this}}</span></a>
+            <a href="/showList/{{this.spotifyId}}"><span>Here goes a playlist {{this.spotifyId}}</span></a>
         </li>
     {{/each}}
 
