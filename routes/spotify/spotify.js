@@ -19,6 +19,8 @@ router.get('/savePlaylist/:id',(req,res,next)=>{
         .then(result => console.log(result))
         .catch(e => console.log(e))
 })
+
+
 router.get('/',(req,res)=>{
     console.log(req.app.locals.user)
     //aqui se guardo el usuario en locals para su uso
