@@ -2,7 +2,7 @@
 @import url(./index-list.css);
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Roboto", Helvetica, Arial, sans-serif; }
 
 .background-img {
   background-image: url("/images/dark.jpg");
