@@ -11,7 +11,7 @@
             </div>
             <div class="container drop600">
                 <div class="input-field col s8">
-                    <h5 class="title-white">Type an artist to start creating your playlist</h5>
+                    <h5 class="title-white">Type an artist or a band to start creating your playlist</h5>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix"></i>
@@ -20,6 +20,7 @@
                             <span class="helper-text" data-error="wrong" data-success="right"></span>
                         </div>
                     </div>
+                    <h5 class="title-white">Type a song</h5>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix"></i>
@@ -32,9 +33,10 @@
                     </button>
                 </div>
             </div>
-
     </form>
 </div>
-
+{{#if error}}
+<h3 class="error" style="color:red;">{{error}}</h3>
+{{/if}}
 <script src="/javascripts/inputList.js"></script>
 <script src="/javascripts/carlosspotify.js"></script>
