@@ -24,8 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         })
         .then(res => {
-          console.log(res)
+
           var playlist_id = res.data.id
+            //here i have to save the playlist
+            axios.get(`http://localhost:3000/spotify/savePlaylist/${playlist_id}`)
           tracksUris = []
           document.querySelectorAll('.track').forEach(function(track,idx,array){
             tracksUris.push(track.innerHTML)

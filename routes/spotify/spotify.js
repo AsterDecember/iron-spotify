@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const User = require("../../models/User");
 const passport = require("passport");
-
+const Playlist = require('../../models/Playlist')
 
 
 function ensureAuthenticated(req, res, next) {
@@ -12,6 +12,13 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/');
 }
 
+//this route saves playlist
+router.get('/savePlaylist/:id',(req,res,next)=>{
+    const {id} = req.params
+    Playlist.create({id: id})
+        .then(result => console.log(result))
+        .catch(e => console.log(e))
+})
 router.get('/',(req,res)=>{
     console.log(req.app.locals.user)
     //aqui se guardo el usuario en locals para su uso

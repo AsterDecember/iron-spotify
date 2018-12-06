@@ -21,6 +21,7 @@ spotifyApi.clientCredentialsGrant()
 router.get('/playlist', (req, res, next) => {
     //Aux used to pass tracks list to template and then clean it
     var auxTracks = playlistTracks
+    console.log('heythere--------------',req.isAuthenticated());
     console.log(auxTracks)
     res.render('music/list',{auxTracks})
     //Reset for a clean playlist

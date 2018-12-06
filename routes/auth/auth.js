@@ -36,7 +36,7 @@ router.get(
     '/callback',
     passport.authenticate('spotify', { failureRedirect: '/login' }),
     function(req, res) {
-
+        console.log(req.isAuthenticated());
         req.app.locals.user = req.user
         console.log(req.user)
         //console.log(req.app.locals.user)
