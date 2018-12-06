@@ -92,10 +92,12 @@ app.use('/auth', authRoutes);
 
 const spotifyRoutes = require('./routes/spotify/spotify')
 const carlosRoutes = require('./routes/spotify/rutascarlos')
-const listRoutes = require('./routes/spotify/createList')
+const createListRoutes = require('./routes/spotify/createList')
+const showListRoutes = require('./routes/spotify/showList')
 app.use('/spotify',spotifyRoutes)
 app.use('/rutascarlos',carlosRoutes)
-app.use('/createList',listRoutes)
+app.use('/createList',createListRoutes)
+app.use('/showList',showListRoutes)
 
 
 module.exports = app;
