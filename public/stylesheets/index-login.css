@@ -293,7 +293,7 @@
 .title-h1{
     color: limegreen;
     font-weight: bolder;
-    margin: 15vh;
+    margin: 15vh 0vh 15vh 0vh;
 }
 .down{
     margin-top: 5vh;

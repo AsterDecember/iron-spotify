@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.localStorage.setItem('photoUrl',photoUrl)
     window.localStorage.setItem('displayName',displayName)
 
-    var elems = document.querySelectorAll('.autocomplete');
+    var elems = document.querySelectorAll('.autocomplete1');
+    var elems2 = document.querySelectorAll('.autocomplete2');
     //const names = {}
     let data = axios({
         method: 'get',
@@ -39,6 +40,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
             //console.log(items)
             })
+        .catch(err => console.log(err))
+
+    //get top tracks
+    axios({
+        method: 'get',
+        url: `https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=100&offset=5`,
+        dataType: 'json',
+        headers: {
+            'Authorization' : 'Bearer '+ token,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+        .then(res => {
+            console.log(res.data.items)
+            console.log(res)
+            let data = {}
+            const {items} = res.data
+            items.forEach((item)=> {
+                data[item.name] = null;
+            })
+            console.log(data)
+            var instances = M.Autocomplete.init(elems,{data});
+            return data
+
+            //console.log(items)
+        })
         .catch(err => console.log(err))
 
 });
