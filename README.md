@@ -4,20 +4,20 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Spotyfi Clone app with special features:
+Ran_Dj app Create Random Sotify Playlist special features:
 
   - Show spotify info
   - Show your playlist
-  - Edit your information
 
 # New Features!
 
   - Working on it
+    - Publish on your facebook your playlist
+
 
 
 Extra features:
   - Create Random Playlist
-  - Publish on your facebook your playlist
   - Magic 🎱
 
 ### Tech

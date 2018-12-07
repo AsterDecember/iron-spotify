@@ -2,9 +2,11 @@
     <h1 class="title-white">Your playlists</h1>
 <ul class="collection ">
     {{#each user.playlists}}
+        <a href="/showList/{{this.spotifyId}}">
         <li class="collection-item dark">
-            <a href="/showList/{{this.spotifyId}}"><span>{{this.name}}</span></a>
+            <span>{{this.name}}</span>
         </li>
+        </a>
     {{/each}}
 
 </ul>
