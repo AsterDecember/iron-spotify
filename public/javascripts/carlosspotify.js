@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = ''
         var openPlaylistUrl = `http://open.spotify.com/user/${user_id}/playlist/${playlist_id}`
         var listenNow = document.createElement('a');
+        listenNow.classList.add('a-listen-now');
         var carousel = document.querySelector('#musicnow-container')
         carousel.appendChild(listenNow)
         listenNow.setAttribute('href', openPlaylistUrl)
