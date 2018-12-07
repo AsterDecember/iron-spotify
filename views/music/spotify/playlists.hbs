@@ -1,11 +1,13 @@
 <div class="container">
-    <h1 class="title-white">Your playlist</h1>
+    <h1 class="title-white">Your playlists</h1>
 <ul class="collection ">
     {{#each user.playlists}}
         <li class="collection-item dark">
-            <a href="/showList/{{this.spotifyId}}"><span>Here goes a playlist {{this.spotifyId}}</span></a>
+            <a href="/showList/{{this.spotifyId}}"><span>{{this.name}}</span></a>
         </li>
     {{/each}}
 
 </ul>
 </div>
+
+<script src="/javascripts/showList.js"></script>

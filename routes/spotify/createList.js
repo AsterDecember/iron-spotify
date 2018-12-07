@@ -4,6 +4,7 @@ const router = express.Router()
 
 var playlistArtist = []
 var playlistTracks = []
+var playlistName = 'Ran_Dj feat. '
 
 var spotifyApi = new SpotifyWebApi({
     clientId : process.env.CLIENT_ID,
@@ -22,11 +23,12 @@ router.get('/playlist', (req, res, next) => {
     //Aux used to pass tracks list to template and then clean it
     var auxTracks = playlistTracks
     console.log('heythere--------------',req.isAuthenticated());
-    console.log(auxTracks)
-    res.render('music/list',{auxTracks})
+    // console.log(auxTracks)
+    res.render('music/list',{auxTracks, playlistName})
     //Reset for a clean playlist
     playlistTracks = []
     playlistArtist = []
+    playlistName = 'Ran_Dj feat. '
 })
 
 router.get('/', (req, res, next) => {
@@ -101,6 +103,7 @@ const searchByArtist = async (search) => {
   //If there are no artists, it should try a different search
   if(data.body.artists.total > 0){
     let artists = data.body.artists.items
+    playlistName += `${artists[0].name}`
     const result = await buildPlaylist(artists[0])
     return result
   }
@@ -113,6 +116,7 @@ const searchByTrack = async (search) => {
   //If there are no tracks, it should try a different search
   if(data.body.tracks.total > 0){
     let track = data.body.tracks.items[0]
+    playlistName += ` + ${track.artists[0].name}`
     playlistTracks.push(
           {
             name:track.name,

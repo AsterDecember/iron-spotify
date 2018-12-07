@@ -1,6 +1,7 @@
 var SpotifyWebApi = require('spotify-web-api-node')
 const express = require('express')
 const router = express.Router()
+const User = require("../../models/User");
 
 var playlistArtist = []
 var playlistTracks = []
@@ -28,13 +29,20 @@ router.get('/playlist/detail/:id', async (req, res, next) => {
     const auxTracks = data.body.tracks.items
     if(auxTracks){
       res.render('music/carlos/detail',{auxTracks})
-      // res.send(auxTracks)
     } 
-    else res.send(error)
+    else res.redirect('/playlist')
   } catch (error) {
     console.log(error)
   }
-  // res.render('music/carlos/detail',{auxTracks})
+})
+
+router.get('/playlist/detail', async (req, res, next) => {
+  // Search for user's playlists
+  req.user
+  User.findById(req.user.id).populate('playlists')
+  .then(user => {
+
+  })
 })
 
 router.get('/playlist', (req, res, next) => {
