@@ -37,15 +37,20 @@ router.get('/:id',async (req,res,next)=>{
 
 })
 
-router.get('/',(req,res,next)=>{
-
+router.get('/', async (req,res,next)=>{
     User.findById(req.app.locals.user._id).populate('playlists')
         .then(user =>{
             console.log('usuario populated:',user)
-            res.render('music/spotify/playlists',{user})
+            user.playlists.forEach(async (playlist, idx, array) => {
+                try {
+                    const data = await spotifyApi.getPlaylist(playlist.spotifyId)
+                    if(data) playlist['name'] = data.body.name
+                } catch (error) {
+                    console.log(error)
+                } 
+                if(idx === array.length -1) res.render('music/spotify/playlists',{user})
+            });
         })
-    //console.log('playlist info',playlists)
-
 })
 
 

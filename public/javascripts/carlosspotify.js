@@ -5,11 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
   var user_id = window.localStorage.getItem('id_spotify')
   var tracksUris = []
   var button = document.querySelector('#musicnow')
+  var playlistName = document.querySelector('.playlistName').innerHTML
   button.innerHTML = "Add to Spotify"
   button.addEventListener('click',()=>{
     console.log('Create playlist in Spotify profile')
     var jsonData = {
-        name: "Ran Dj Playlist",
+        name: playlistName,
         public: false,
         description: "Playlist created by Ran Dj create yours at https://ran-dj.herokuapp.com"
     }
