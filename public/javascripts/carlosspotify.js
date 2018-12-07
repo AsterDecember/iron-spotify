@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 spotifyId : playlist_id,
                 userId :  window.localStorage.getItem('id_spotify')
             }
-            axios.post('http://localhost:3000/spotify/savePlaylist',playlistOBj)
+            axios.post('https://ran-dj.herokuapp.com/spotify/savePlaylist',playlistOBj)
                 .then(result => console.log(result))
                 .catch(e => console.log(e))
           tracksUris = []
