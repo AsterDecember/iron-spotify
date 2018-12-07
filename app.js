@@ -47,7 +47,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-
+app.use(favicon(__dirname + '/public/images/randjLogo.png'));
 app.use(passport.initialize());
 app.use(passport.session());
 

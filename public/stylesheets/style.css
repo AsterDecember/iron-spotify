@@ -114,11 +114,14 @@ span {
 .full-nav {
   background-color: black !important; }
 
-@media only screen and (min-width: 700px) {
+.brand-logo {
+  margin: .8rem; }
+
+@media only screen and (min-width: 1000px) {
   .hide-at700 {
     display: none; } }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1000px) {
   .full-nav {
     display: none !important; } }
 
