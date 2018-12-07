@@ -1,7 +1,17 @@
 {{#if index}}
 
 {{else}}
-    <ul id="slide-out" class="sidenav">
+    <nav class="full-nav">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Logo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul id="slide-out" class="sidenav hide-at700">
         <li><div class="user-view">
             <div class="background">
                 <img src="/images/colors.jpg">
@@ -14,6 +24,7 @@
         <li><a class="waves-effect" href="/createList">Create another Playlist!</a></li>
         <li><a class="waves-effect" href="/showList">Show your playlist</a></li>
     </ul>
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><img class="jamberguerg" src="/images/whiteJamburgerg.png" alt=""></a>
+    <a href="#" data-target="slide-out" class="sidenav-trigger hide-at700"><div class="nav-div-full"><img class="jamberguerg" src="/images/whiteJamburgerg.png" alt=""></div></a>
     <script src="/javascripts/nav.js"></script>
+
 {{/if}}

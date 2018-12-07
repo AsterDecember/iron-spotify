@@ -111,4 +111,15 @@ span {
 .formula {
   word-spacing: .5em; }
 
+.full-nav {
+  background-color: black !important; }
+
+@media only screen and (min-width: 700px) {
+  .hide-at700 {
+    display: none; } }
+
+@media only screen and (max-width: 700px) {
+  .full-nav {
+    display: none !important; } }
+
 /*# sourceMappingURL=style.css.map */
